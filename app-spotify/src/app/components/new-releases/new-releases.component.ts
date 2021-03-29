@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { NewReleasesService } from 'src/app/services/new-releases.service';
 
 import { NewReleasesItem } from '../../interfaces/new-releases';
@@ -13,15 +12,12 @@ export class NewReleasesComponent implements OnInit {
 
   public newReleases: NewReleasesItem[] = []
 
-  constructor(private newReleasesService: NewReleasesService,
-    private authService: AuthService,
-) { }
+  constructor(private newReleasesService: NewReleasesService) { }
 
   ngOnInit(): void {
     this.getNewReleases();
   }
 
-    // call service to get new releases from spotify
     public async getNewReleases(): Promise<void> {
       (await this.newReleasesService.getNewReleases()).subscribe((data: any) => {
         this.newReleases = data;

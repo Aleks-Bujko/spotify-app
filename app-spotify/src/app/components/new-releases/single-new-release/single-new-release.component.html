@@ -1,4 +1,4 @@
-<div class="new-release-item animated fadeIn" *ngIf="newRelease">
+<div class="new-release-item" *ngIf="newRelease">
     <div class="new-release-item__img-container" *ngFor="let image of newRelease.images; let second=height">
         <img class="new-release-item__img" *ngIf="image.height===300" src="{{image.url}}" alt="{{newRelease.name}}">
     </div>

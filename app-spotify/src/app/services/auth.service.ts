@@ -14,11 +14,7 @@ export class AuthService {
   clientSecret = environment.clientSecret;
   scope = environment.scope;
   redirectUri = environment.redirectUri;
-  private artistUrl: string;
   token: any = this.getToken();
-
-  //private albumsUrl: string;
-  //private albumUrl: string;
 
   constructor(private http: HttpClient) {
 
@@ -58,10 +54,8 @@ export class AuthService {
   }
 
   /**
-   * Returns spotify access token.
-   * @param code Spotify Code
-   * @param state Spotify auth state
-   */
+   * Returns spotify access token. */
+  
   getToken() {
     const state = this.getAuthState(); 
     const url = 'https://accounts.spotify.com/api/token';
