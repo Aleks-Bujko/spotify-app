@@ -5,3 +5,5 @@ export interface Artist {
     genres: any;
     albums: Album[];
 }
+
+export interface Artists extends Array<Artist> {}

@@ -8,6 +8,7 @@ import { AuthService } from './services/auth.service';
 import { SearchComponent } from './components/search/search.component';
 import { NewReleasesComponent } from './components/new-releases/new-releases.component';
 import { SingleNewReleaseComponent } from './components/new-releases/single-new-release/single-new-release.component';
+import { SearchResultComponent } from './components/search/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SingleNewReleaseComponent } from './components/new-releases/single-new-
     SearchComponent,
     NewReleasesComponent,
     SingleNewReleaseComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,

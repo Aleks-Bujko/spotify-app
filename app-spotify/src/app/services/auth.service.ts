@@ -55,7 +55,7 @@ export class AuthService {
 
   /**
    * Returns spotify access token. */
-  
+
   getToken() {
     const state = this.getAuthState(); 
     const url = 'https://accounts.spotify.com/api/token';
@@ -130,24 +130,6 @@ export class AuthService {
       .pipe(catchError(this.handleError))
 
   }
-
-  async searchMusic(query: string) {
-
-    const token = await this.getToken();
-
-    const url = `https://api.spotify.com/v1/search?q=${ query }&type=track%2Cartist`;
-    
-    const headers = new HttpHeaders({
-      // Creates a Base64-encoded ASCII string
-      // tslint:disable-next-line:object-literal-key-quotes
-      'Authorization': `${this.token}`,
-    });
-    return this.http
-      .get(url, { headers })
-      .pipe(catchError(this.handleError))
-  }
-
-  
 
     /**
    *  Generates a random string containing numbers and letters

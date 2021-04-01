@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { Artist } from '../../interfaces/artist';
-import { Album } from '../../interfaces/album';
+import { Component, Input, OnInit } from '@angular/core';
+import { SearchService } from 'src/app/services/search.service';
+
+import { APISearch } from '../../interfaces/APISearch';
 
 @Component({
   selector: 'app-search',
@@ -9,18 +9,36 @@ import { Album } from '../../interfaces/album';
   styleUrls: ['./search.component.sass']
 })
 export class SearchComponent implements OnInit {
+  @Input() public displaySearch: boolean = false;
 
-  album: any;
-  query: string;
 
-  constructor(private authService: AuthService) { }
+  public artistsList: any[] = [];
+  public tracksList: any[] = [];
 
-  async ngOnInit() {
+  constructor(private searchService: SearchService) { }
 
-  (await this.authService.searchMusic(this.query))
-      .subscribe(album => {
-        console.log(album)
-        this.album = album;
-      });
-  }
+ngOnInit() {
+}
+
+public async search(query: string): Promise<void> {
+  console.log('Term to find:', query);
+
+  (await this.searchService.searchArtistsAndTracks(query)).subscribe((data: any) => {
+    this.artistsList = data.artists.items;
+    this.tracksList = data.tracks.items;
+
+    console.log('Data:', data);
+
+    if (this.artistsList.length === 0 && this.tracksList.length === 0) {
+      this.displaySearch = true;
+    }
+
+  }, (err) => {
+    console.log('Error:', err);
+    console.error(err.message);
+  }, () => {
+    console.log('Complete!');
+  });
+}
+
 }
