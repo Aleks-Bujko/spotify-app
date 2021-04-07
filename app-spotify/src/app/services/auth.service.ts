@@ -3,8 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Token } from './token';
-
+import { Token } from '../interfaces/token';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,9 +16,6 @@ export class AuthService {
   token: any = this.getToken();
 
   constructor(private http: HttpClient) {
-
-    this.token = this.getToken();
-
   }
 
 /**
@@ -32,18 +28,6 @@ export class AuthService {
   // Set spotify auth state
   // This provides protection against attacks such as cross-site request forgery
   localStorage.setItem('spotify:auth:state', state);
-
-  // Navigate to spotify authorization page
- /* window.location.replace(
-    'https://accounts.spotify.com/authorize?' +
-      querystring.stringify({
-        response_type: 'code',
-        client_id: this.clientId,
-        scope: this.scope,
-        redirect_uri: this.redirectUri,
-        state
-      })
-  ); */
 } 
 
   /**
@@ -76,26 +60,23 @@ export class AuthService {
 
     const headers = new HttpHeaders({
       // Creates a Base64-encoded ASCII string
-      // tslint:disable-next-line:object-literal-key-quotes
       'Authorization':
         'Basic ' + window.btoa(this.clientId + ':' + this.clientSecret),
       'Content-Type': 'application/x-www-form-urlencoded'
     })
 
     return this.http
-      .post(url, body, { headers })
+      .post(url, body)
       .toPromise()
-      .then( (token:any) => {
+      .then((token) => {
         this.token = `Bearer ${ token['access_token'] }`;
+        localStorage.setItem('token', this.token)
       }, (err: any) => {
         console.log(err);
       });
+
   }
 
-  /**
-   * Returns new access token.
-   * @param refreshToken Spotify refresh token
-   */
   getTokenByRefresh(refreshToken: string) {
     const url = 'https://accounts.spotify.com/api/token';
 
@@ -114,17 +95,18 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  async getQuery(query:string) {
-
-    const token = await this.getToken();
+  getQuery(query:string) {
 
     const url = `https://api.spotify.com/v1/${query}`;
+
+    const token = localStorage.getItem('token');
     
     const headers = new HttpHeaders({
       // Creates a Base64-encoded ASCII string
       // tslint:disable-next-line:object-literal-key-quotes
-      'Authorization': `${this.token}`,
+      'Authorization': `${token}`,
     });
+
     return this.http
       .get(url, { headers })
       .pipe(catchError(this.handleError))

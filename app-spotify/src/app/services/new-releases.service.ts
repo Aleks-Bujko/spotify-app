@@ -1,21 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, Query } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
 
 import { FormattedNewReleases, APINewReleases } from '../interfaces/new-releases';
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewReleasesService {
+export class NewReleasesService implements OnInit {
   private newReleasesUrl: string = 'browse/new-releases';
 
   constructor(private authService: AuthService) { }
+  ngOnInit(): void {
 
-  public async getNewReleases(): Promise<Observable<FormattedNewReleases[]>> {
-    return (await this.authService.getQuery(this.newReleasesUrl)).pipe(
+  }
+
+  public getNewReleases(): Observable<FormattedNewReleases[]> {
+    return this.authService.getQuery(this.newReleasesUrl).pipe(
       map((res: APINewReleases) => {
         if (!res) {
           throw new Error('Value expected!');
@@ -31,4 +35,5 @@ export class NewReleasesService {
         throw new Error(err.message);
       }));
   }
+
 }

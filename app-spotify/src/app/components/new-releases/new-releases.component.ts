@@ -18,8 +18,8 @@ export class NewReleasesComponent implements OnInit {
     this.getNewReleases();
   }
 
-    public async getNewReleases(): Promise<void> {
-      (await this.newReleasesService.getNewReleases()).subscribe((data: any) => {
+    public getNewReleases() {
+      this.newReleasesService.getNewReleases().subscribe((data: any) => {
         this.newReleases = data;
         console.log('Data:', data);
       }, (err) => {

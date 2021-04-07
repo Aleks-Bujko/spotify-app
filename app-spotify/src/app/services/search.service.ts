@@ -13,11 +13,11 @@ export class SearchService {
 
   constructor(private authService: AuthService) {}
 
-  public async searchArtistsAndTracks(query: string): Promise<Observable<APISearch[]>> {
+  public searchArtistsAndTracks(query: string): Observable<APISearch[]> {
     const searchUrl: string = `search?q=${ query }&type=track%2Cartist`;
 
-    return (await this.authService.getQuery(searchUrl)).pipe(
-      debounceTime(500),
+    return this.authService.getQuery(searchUrl).pipe(
+      debounceTime(1000),
       map((res: APISearch[]) => {
         if (!res) {
           throw new Error('Value expected!');

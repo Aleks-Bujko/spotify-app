@@ -20,10 +20,10 @@ export class SearchComponent implements OnInit {
 ngOnInit() {
 }
 
-public async search(query: string): Promise<void> {
+public search(query: string) {
   console.log('Term to find:', query);
 
-  (await this.searchService.searchArtistsAndTracks(query)).subscribe((data: any) => {
+  this.searchService.searchArtistsAndTracks(query).subscribe((data: any) => {
     this.artistsList = data.artists.items;
     this.tracksList = data.tracks.items;
 
