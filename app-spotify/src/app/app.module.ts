@@ -9,6 +9,9 @@ import { SearchComponent } from './components/search/search.component';
 import { NewReleasesComponent } from './components/new-releases/new-releases.component';
 import { SingleNewReleaseComponent } from './components/new-releases/single-new-release/single-new-release.component';
 import { SearchResultComponent } from './components/search/search-result/search-result.component';
+import { ArtistComponent } from './components/artists/artist.component';
+import { ArtistTopTracksComponent } from './components/artists/artist-top-tracks/artist-top-tracks.component';
+import { ArtistAlbumsComponent } from './components/artists/artist-albums/artist-albums.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { SearchResultComponent } from './components/search/search-result/search-
     NewReleasesComponent,
     SingleNewReleaseComponent,
     SearchResultComponent,
+    ArtistComponent,
+    ArtistTopTracksComponent,
+    ArtistAlbumsComponent,
   ],
   imports: [
     BrowserModule,

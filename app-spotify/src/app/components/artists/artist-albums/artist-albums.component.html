@@ -1,0 +1,8 @@
+<div class="artist-albums__single-album" *ngIf="album">
+    <div class="artist-albums__image-container" *ngFor="let image of album.images; let second=height">
+        <img class="artist-albums__image" *ngIf="image.height===300" src="{{image.url}}" alt="{{album.name}}" height="200" width="200" />
+    </div>
+    <div class="artist-albums__name-wrapper">
+        <span class="artist-albums__album-name">{{album.name}}</span>
+    </div>
+</div>

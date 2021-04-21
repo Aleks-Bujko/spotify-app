@@ -1,9 +1,9 @@
 import { Artist } from './artist';
-import { Image } from './image';
+import { Images } from './image';
 
 export interface FormattedNewReleases{
     id: string;
-    images: Image[];
+    images: Images;
     name: string;
     artists: Artist[];
     type: string;
@@ -26,7 +26,7 @@ export interface NewReleasesItem {
     external_urls: string;
     href: string;
     id: string;
-    images: Image[];
+    images: Images;
     name: string;
     release_date: Date;
     release_date_precision: "day";

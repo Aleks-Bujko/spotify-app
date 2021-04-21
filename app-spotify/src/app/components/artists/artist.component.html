@@ -1,0 +1,19 @@
+<div class="artist" *ngIf="artist != null">
+    <div class="artist__name-container">
+        <h1 class="artist__name">
+            {{ artist.name }}
+        </h1>
+    </div>
+    <div class="artist__header-image-container">
+        <img class="artist__header-image" [src]="artist.images[0].url" height="400" width="400"/>
+    </div>
+    <div class="artist__follower-container">
+        <span class="artist__follower-count">Monthly followers: {{ artist.followers.total }}</span>
+    </div>
+    <div class="artist__top-tracks-container">
+        <ul class="artist-top-tracks__track-list" >
+            <app-artist-top-tracks [topTrack]="topTrack" *ngFor="let topTrack of topTracks"></app-artist-top-tracks>
+        </ul>
+    </div>
+    <app-artist-albums [album]="album" *ngFor="let album of albums" ></app-artist-albums>
+</div>

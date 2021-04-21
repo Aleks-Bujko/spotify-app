@@ -21,7 +21,7 @@ export class NewReleasesComponent implements OnInit {
     public getNewReleases() {
       this.newReleasesService.getNewReleases().subscribe((data: any) => {
         this.newReleases = data;
-        console.log('Data:', data);
+        console.log('New Releases:', data);
       }, (err) => {
         console.log('Error:', err);
         console.error(err.message);

@@ -5,7 +5,6 @@ import { map, catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 import { FormattedNewReleases, APINewReleases } from '../interfaces/new-releases';
-import { Token } from '@angular/compiler/src/ml_parser/lexer';
 
 @Injectable({
   providedIn: 'root'

@@ -91,8 +91,14 @@ export class AuthService {
     });
 
     return this.http
-      .post(url, body, { headers })
-      .pipe(catchError(this.handleError));
+      .post(url, body)
+      .toPromise()
+      .then((token) => {
+        this.token = `Bearer ${ token['access_token'] }`;
+        localStorage.setItem('token', this.token)
+      }, (err: any) => {
+        console.log(err);
+      });
   }
 
   getQuery(query:string) {
@@ -110,7 +116,6 @@ export class AuthService {
     return this.http
       .get(url, { headers })
       .pipe(catchError(this.handleError))
-
   }
 
     /**
