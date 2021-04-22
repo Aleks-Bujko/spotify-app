@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { ArtistService } from '../../services/artist.service';
 
@@ -9,18 +10,27 @@ import { ArtistService } from '../../services/artist.service';
 })
 export class ArtistComponent implements OnInit {
 
-  public artistId: string = "0X380XXQSNBYuleKzav5UO";
+  public artistId: string;
   public artist: any;
   public topTracks: any[];
   public albums: any[]; 
 
-  constructor(private artistService: ArtistService) { }
+  constructor(private activatedRoute: ActivatedRoute, private artistService: ArtistService) { }
 
   ngOnInit(): void {
+    this.getCurrentRoute();
     this.getArtist();
     this.getTopTracks();
     this.getAlbums();
   }
+
+    
+    public getCurrentRoute(): void {
+      this.activatedRoute.params.subscribe((params) => {
+        this.artistId = params.id;
+        console.log('Current Route Id', params.id);
+      });
+    }
 
     public getArtist() {
       this.artistService.getArtists(this.artistId).subscribe((artist: any) => {

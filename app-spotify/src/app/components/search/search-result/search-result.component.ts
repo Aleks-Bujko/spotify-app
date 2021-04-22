@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
@@ -10,9 +11,13 @@ export class SearchResultComponent implements OnInit {
   @Input() artist:any[] = [];
   @Input() track:any[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  public navigate(artist: any): void {
+    this.router.navigate(['/artist', artist.id]);
   }
 
 }

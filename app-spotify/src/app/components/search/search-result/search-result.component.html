@@ -1,4 +1,4 @@
-<div class="search-artist-item" *ngIf="artist">  
+<div class="search-artist-item" *ngIf="artist" (click)="navigate(artist)">  
     <div class="search-artist-item__img-container" *ngFor="let image of artist.images; let second=height">
         <img class="new-release-item__img" *ngIf="" src="{{image.url}}" alt="{{artist.name}}" width="160" height="160">
     </div>
