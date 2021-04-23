@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../../services/auth.service';
 
 import { APIArtist } from '../interfaces/APIArtists';
 import { APITracks } from '../interfaces/APITracks';

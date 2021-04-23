@@ -7,7 +7,7 @@
     </div>
     <div class="new-release-item__bottom-container">
         <div class="new-release-item__artists-container" *ngFor="let artist of newRelease.artists">
-            <span class="new-release-item__artist">{{ artist.name }}</span>
+            <a routerLink="/artist/{{artist.id}}"><span class="new-release-item__artist" >{{ artist.name }}</span></a>
         </div>
         <!--<div class="new-release-item__type-container">
             <p class="new-release-item__type">{{ newRelease.type | uppercase }}</p>

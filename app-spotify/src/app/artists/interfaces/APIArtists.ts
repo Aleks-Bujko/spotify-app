@@ -1,6 +1,6 @@
-import { ExternalUrls } from './external-Urls'
-import { Followers } from './followers'
-import { Images } from './image'
+import { ExternalUrls } from '../../interfaces/external-Urls'
+import { Followers } from '../../interfaces/followers'
+import { Images } from '../../interfaces/image'
 
 export interface APIArtist {
     external_urls: ExternalUrls;

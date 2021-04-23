@@ -1,6 +1,6 @@
-import { Album } from './album';
-import { ExternalUrls } from './external-Urls';
-import { Artists } from './artist';
+import { Album } from '../../interfaces/album';
+import { ExternalUrls } from '../../interfaces/external-Urls';
+import { Artists } from '../../interfaces/artist';
 
 export interface APITracks {
     track: Tracks;

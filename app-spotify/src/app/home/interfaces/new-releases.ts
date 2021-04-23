@@ -1,5 +1,5 @@
-import { Artist } from './artist';
-import { Images } from './image';
+import { Artist } from '../../interfaces/artist';
+import { Images } from '../../interfaces/image';
 
 export interface FormattedNewReleases{
     id: string;

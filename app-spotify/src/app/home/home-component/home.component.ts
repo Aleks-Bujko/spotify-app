@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NewReleasesService } from 'src/app/services/new-releases.service';
 
-import { NewReleasesItem } from '../../interfaces/new-releases';
+import { NewReleasesService } from '../services/new-releases.service';
+
+import { NewReleasesItem } from '../../home/interfaces/new-releases';
 
 @Component({
-  selector: 'app-new-releases',
-  templateUrl: './new-releases.component.html',
-  styleUrls: ['./new-releases.component.sass']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.sass']
 })
-export class NewReleasesComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   public newReleases: NewReleasesItem[] = []
 
@@ -29,5 +30,4 @@ export class NewReleasesComponent implements OnInit {
         console.log('Complete!');
       });
     }  
-
 }

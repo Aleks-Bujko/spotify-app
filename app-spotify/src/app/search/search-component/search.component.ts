@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SearchService } from 'src/app/services/search.service';
+import { SearchService } from '../services/search.service';
 
-import { APISearch } from '../../interfaces/APISearch';
+import { APISearch } from '../interfaces/APISearch';
 
 @Component({
   selector: 'app-search',

@@ -1,8 +1,8 @@
-import { Injectable, OnInit, Query } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../../services/auth.service';
 
 import { FormattedNewReleases, APINewReleases } from '../interfaces/new-releases';
 

@@ -4,7 +4,7 @@ import { map, catchError, debounceTime } from 'rxjs/operators';
 
 import { APISearch } from '../interfaces/APISearch';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Injectable({
   providedIn: 'root'

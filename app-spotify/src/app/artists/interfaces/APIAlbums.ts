@@ -1,6 +1,6 @@
-import { Artists } from './artist';
-import { Images } from './image';
-import { ExternalUrls } from './external-Urls';
+import { Artists } from '../../interfaces/artist';
+import { Images } from '../../interfaces/image';
+import { ExternalUrls } from '../../interfaces/external-Urls';
 
 export interface APIAlbums {
     href: string;
