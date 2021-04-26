@@ -1,4 +1,19 @@
 .new-releases
-    &__new-releases-section
+
+    padding: 3rem
+
+    &__new-releases-container
         display: flex
         flex-direction: row
+        flex-wrap: nowrap
+        overflow: auto
+
+    &__slider-arrow--left
+        position: fixed
+        left: 0
+        top: 23%
+        
+    &__slider-arrow--right
+        position: fixed
+        right: 0
+        top: 23%

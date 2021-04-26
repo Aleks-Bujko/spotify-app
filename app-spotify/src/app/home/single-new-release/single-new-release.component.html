@@ -3,11 +3,11 @@
         <img class="new-release-item__img" *ngIf="image.height===300" src="{{image.url}}" alt="{{newRelease.name}}" height="200" width="200">
     </div>
     <div class="new-release-item__title-container">
-        <p class="new-release-item__title">{{ newRelease.name | uppercase}}</p>
+        <p class="new-release-item__title">{{ newRelease.name }}</p>
     </div>
     <div class="new-release-item__bottom-container">
-        <div class="new-release-item__artists-container" *ngFor="let artist of newRelease.artists">
-            <a routerLink="/artist/{{artist.id}}"><span class="new-release-item__artist" >{{ artist.name }}</span></a>
+        <div class="new-release-item__artists-container" *ngFor="let artist of newRelease.artists; let isLast = last">
+            <a routerLink="/artist/{{artist.id}}"><span class="new-release-item__artist" >{{ artist.name }}{{isLast ? '' : ', '}}</span></a>
         </div>
         <!--<div class="new-release-item__type-container">
             <p class="new-release-item__type">{{ newRelease.type | uppercase }}</p>

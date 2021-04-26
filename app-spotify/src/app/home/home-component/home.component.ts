@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { NewReleasesService } from '../services/new-releases.service';
 
@@ -11,9 +11,11 @@ import { NewReleasesItem } from '../../home/interfaces/new-releases';
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild('slider', { read: ElementRef }) public slider: ElementRef<any>;
+
   public newReleases: NewReleasesItem[] = []
 
-  constructor(private newReleasesService: NewReleasesService) { }
+  constructor(private newReleasesService: NewReleasesService) {  }
 
   ngOnInit(): void {
     this.getNewReleases();
@@ -29,5 +31,14 @@ export class HomeComponent implements OnInit {
       }, () => {
         console.log('Complete!');
       });
-    }  
+    }
+    
+    public scrollRight(): void {
+      this.slider.nativeElement.scrollTo({ left: (this.slider.nativeElement.scrollLeft + 700), behavior: 'smooth' });
+    }
+  
+    public scrollLeft(): void {
+      this.slider.nativeElement.scrollTo({ left: (this.slider.nativeElement.scrollLeft - 700), behavior: 'smooth' });
+    }
+  
 }
